@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ subject_name }} Quiz | DSA Quiz Master</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="quiz-page">
+
+    <header class="quiz-navbar">
+        <a class="quiz-brand" href="{{ url_for('home') }}">
+            DSA<span>Master</span>
+        </a>
+
+        <a class="exit-link" href="{{ url_for('home') }}">
+            ← Exit Quiz
+        </a>
+    </header>
+
+    <main class="quiz-main">
+
+        <section class="quiz-heading">
+            <span class="quiz-badge">{{ subject_name }} QUIZ</span>
+
+            <h1>Challenge Yourself<span>.</span></h1>
+
+            <p>Take your time, choose the best answer, and do your best.</p>
+        </section>
+
+        <section class="quiz-card">
+
+            <div class="quiz-card-top">
+                <div>
+                    <span class="small-label">CURRENT QUESTION</span>
+                    <h2>Question {{ number }} <span>of {{ total }}</span></h2>
+                </div>
+
+                <div class="question-counter">
+                    {{ "%02d"|format(number) }}
+                    <span>/ {{ "%02d"|format(total) }}</span>
+                </div>
+            </div>
+
+<div class="quiz-progress-track">
+    <div class="quiz-progress-fill"
+         data-progress="{{ progress }}">
+    </div>
+</div>
+
+            <div class="question-area">
+
+                <div class="question-number-icon">
+                    Q{{ number }}
+                </div>
+
+                <h3>{{ question.question }}</h3>
+
+                <p class="answer-instruction">
+                    Select one correct answer
+                </p>
+
+                <form method="POST">
+
+                    <div class="answer-options">
+
+                        {% for option in question.options %}
+
+                        <label class="answer-option
+                            {% if selected_answer == option %}selected{% endif %}">
+
+                            <input
+                                type="radio"
+                                name="answer"
+                                value="{{ option }}"
+                                {% if selected_answer == option %}checked{% endif %}
+                                required
+                            >
+
+                            <span class="option-letter">
+                                {{ ["A", "B", "C", "D"][loop.index0] }}
+                            </span>
+
+                            <span class="option-text">{{ option }}</span>
+
+                            <span class="option-check">✓</span>
+
+                        </label>
+
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="quiz-navigation">
+
+                        <div class="navigation-left">
+                            {% if number > 1 %}
+                            <button
+                                class="previous-btn"
+                                type="submit"
+                                name="action"
+                                value="previous"
+                                formnovalidate>
+                                ← Previous
+                            </button>
+                            {% else %}
+                            <a class="previous-btn"
+                               href="{{ url_for('home') }}">
+                                ← Home
+                            </a>
+                            {% endif %}
+                        </div>
+
+                        <button
+                            class="next-btn"
+                            type="submit"
+                            name="action"
+                            value="next">
+
+                            {% if number == total %}
+                                Submit Quiz ✓
+                            {% else %}
+                                Next Question →
+                            {% endif %}
+
+                        </button>
+
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <p class="quiz-footer-note">
+            <span>●</span> Your progress is saved as you move through questions.
+        </p>
+
+    </main>
+
+    <footer class="quiz-footer">
+        DSA Quiz Master <span>·</span> OEL Group Project
+    </footer>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

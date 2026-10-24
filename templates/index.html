@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Quiz Master</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="brand">DSA<span>Master</span></div>
+        <div class="nav-label">Learn • Practice • Improve</div>
+        
+    </header>
+
+    <main class="dashboard">
+        <section class="hero">
+            <p class="eyebrow">YOUR DSA LEARNING SPACE</p>
+            <h1>Test Your <span>DSA Skills</span></h1>
+            
+<div class="add-quiz-section">
+    <h2>Contribute to Learning</h2>
+    <p>Add new quiz questions to help students practice.</p>
+
+    <a href="" class="add-quiz-btn">
+        + Add Quiz Questions for Students
+    </a>
+</div>
+            <p>
+                Choose a topic, solve 10 questions, and track
+                your progress in Data Structures.
+            </p>
+            <div class="stats">
+               <div><strong>5</strong><small>Core Subjects</small></div>
+<div><strong>50</strong><small>Total Questions</small></div>
+<div><strong>10</strong><small>Per Subject</small></div>
+            </div>
+        </section>
+
+        <section class="subject-section">
+            <div class="section-heading">
+                <div>
+                    <h2>Explore Subjects</h2>
+                    <p>Select a subject to start your quiz.</p>
+                </div>
+            </div>
+
+           
+<div class="subject-grid">
+
+    <article class="subject-card array-card">
+        <div class="subject-icon">D</div>
+        <p class="subject-tag">01 · DATA STRUCTURES</p>
+        <h3>DSA</h3>
+        <p>Practice Arrays, Stacks, Queues, Linked Lists and other data structures.</p>
+        <div class="card-bottom">
+            <span>10 Questions</span>
+            <a href="{{ url_for('quiz', subject='dsa') }}">Start Quiz →</a>
+        </div>
+    </article>
+
+    <article class="subject-card linked-card">
+        <div class="subject-icon">B</div>
+        <p class="subject-tag">02 · BASIC ELECTRONICS</p>
+        <h3>BEL</h3>
+        <p>Test your knowledge of electronic components, circuits and basic concepts.</p>
+        <div class="card-bottom">
+            <span>10 Questions</span>
+            <a href="{{ url_for('quiz', subject='bel') }}">Start Quiz →</a>
+        </div>
+    </article>
+
+    <article class="subject-card stack-card">
+        <div class="subject-icon">E</div>
+        <p class="subject-tag">03 · ELECTRICAL ENGINEERING</p>
+        <h3>BEE</h3>
+        <p>Revise electrical fundamentals, circuits, voltage and current.</p>
+        <div class="card-bottom">
+            <span>10 Questions</span>
+            <a href="{{ url_for('quiz', subject='bee') }}">Start Quiz →</a>
+        </div>
+    </article>
+
+    <article class="subject-card queue-card">
+        <div class="subject-icon">C</div>
+        <p class="subject-tag">04 · DIGITAL LOGIC</p>
+        <h3>CALD</h3>
+        <p>Practice logic gates, Boolean algebra and digital circuits.</p>
+        <div class="card-bottom">
+            <span>10 Questions</span>
+            <a href="{{ url_for('quiz', subject='cald') }}">Start Quiz →</a>
+        </div>
+    </article>
+
+    <article class="subject-card sda-card">
+        <div class="subject-icon">S</div>
+        <p class="subject-tag">05 · SOFTWARE ENGINEERING</p>
+        <h3>SDA</h3>
+        <p>Test software architecture, design principles, UML and architectural styles.</p>
+        <div class="card-bottom">
+            <span>10 Questions</span>
+            <a href="{{ url_for('quiz', subject='sda') }}">Start Quiz →</a>
+        </div>
+    </article>
+
+</div>
+
+        </section>
+    </main>
+
+    <footer>DSA Quiz Master · OEL Group Project</footer>
+</body>
+</html>
